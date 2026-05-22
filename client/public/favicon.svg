@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#0a0f0a"/>
+  <rect x="2" y="2" width="60" height="60" rx="10" fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.7"/>
+  <g filter="url(#g)" fill="#00ff88">
+    <polygon points="24,18 24,46 48,32"/>
+  </g>
+  <text x="32" y="58" text-anchor="middle" font-family="ui-monospace,monospace" font-size="7" fill="#00d4ff" opacity="0.8">YTDL</text>
+</svg>

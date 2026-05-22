@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body {
+  background: #0a0a0a;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Scanlines */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,136,0.03) 0px,
+    rgba(0,255,136,0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Pulsing border */
+@keyframes pulseBorder {
+  0%,100% { box-shadow: 0 0 0px rgba(0,255,136,0.3), inset 0 0 8px rgba(0,255,136,0.1); }
+  50% { box-shadow: 0 0 28px rgba(0,255,136,0.85), inset 0 0 16px rgba(0,255,136,0.25); }
+}
+.pulse-border:focus-within { animation: pulseBorder 1.6s ease-in-out infinite; }
+
+@keyframes blink { 50% { opacity: 0 } }
+.cursor::after { content: '▮'; margin-left: 4px; animation: blink 1s steps(1) infinite; }
+
+@keyframes glitch {
+  0% { transform: translate(0,0) }
+  20% { transform: translate(-1px, 1px) }
+  40% { transform: translate(1px, -1px) }
+  60% { transform: translate(-1px, -1px) }
+  80% { transform: translate(1px, 1px) }
+  100% { transform: translate(0,0) }
+}
+.glitch:hover { animation: glitch .25s linear infinite; filter: hue-rotate(20deg) contrast(1.1); }
+
+.neon-text { text-shadow: 0 0 6px currentColor; }
+.scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+.scrollbar::-webkit-scrollbar-thumb { background: #00ff8855; border-radius: 4px; }

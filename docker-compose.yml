@@ -1,0 +1,16 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports: ["6379:6379"]
+  app:
+    build: .
+    depends_on: [redis]
+    ports: ["5050:5050"]
+    environment:
+      REDIS_URL: redis://redis:6379
+      BASE_URL: http://localhost:5050
+      PORT: 5050
+      TMP_DIR: /tmp/neon-ytdl
+    tmpfs:
+      - /tmp/neon-ytdl
